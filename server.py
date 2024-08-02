@@ -1,4 +1,3 @@
-# The code is taken verbatim from https://huggingface.co/vectara/hallucination_evaluation_model
 
 from transformers import AutoModelForSequenceClassification
 from IPython.display import Markdown
@@ -7,19 +6,19 @@ from IPython.display import Markdown
 model = AutoModelForSequenceClassification.from_pretrained(
     'vectara/hallucination_evaluation_model', trust_remote_code=True)
 
-def HalluOMeter(
-        premise: str = "Vectara's HHEM-2.1-Open is the best open-source hallucination evaluation model that you can run on consumer-level GPUs like the RTX 3080.", 
+def HHEM2_Web(
+        premise: str = "Vectara's HHEM-2.1-Open is the best open-source hallucination evaluation model outperforming GPT-4 and runnable on consumer-level GPUs like the RTX 3080.", 
         hypothesis: str = "Vectara is a company that makes the best hallucination evaluation models."
         ) -> Markdown:
     """ # The web demo of [Vectara](https://vectara.com)'s HHEM-2.1-Open
 
-    Simply enter a premise and a hypothesis and HHEM-2.1-Open will give you a score, between 0 and 1, gauging how well the hypothesis is supported by the premise. The higher the score, the less the hypothesis hallucinates. For more information, see [here](https://huggingface.co/vectara/hallucination_evaluation_model). 
+    Simply enter a premise and a hypothesis and HHEM-2.1-Open will give you a score, between 0 (very hallucinated) and 1 (very consistent), gauging how well the hypothesis is supported by the premise. For more information, see [here](https://huggingface.co/vectara/hallucination_evaluation_model). 
+
+    This app is [personally maintained](https://github.com/forrestbao/HHEM-2.1-Open) by a group of Vectara lovers. Opinions expressed here do not reflect those of Vectara. 
 
     """
     pairs = [(premise, hypothesis)]
-    try: 
-        scores = model.predict(pairs)
-    except: 
-        return "Error: Your input may be too long. Please try again with shorter (e.g., <1k tokens) inputs."
-    
-    return f"The hallucination score is {scores[0]:.2f}."
+    if len(premise) + len(hypothesis) > 2000*4: 
+        return "Your input is too long. Please ensure that premise and hypothesis is under 2000 characters altogether." 
+    scores = model.predict(pairs)   
+    return f"The score is {scores[0]:.2f}."
