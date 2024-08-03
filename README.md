@@ -9,4 +9,4 @@ pip3 install -r requirements.txt
 funix server.py
 ```
 
-This repo is unofficially maintained by a group of Vectara lovers. Views in this repo does not reflect those of Vectara.
+This repo is unofficially maintained by a group of Vectara lovers. Views in this repo do not reflect those of Vectara.

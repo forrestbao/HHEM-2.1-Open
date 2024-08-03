@@ -1,3 +1,5 @@
 funix 
 transformers
 ipython
+torch
+peft
