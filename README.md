@@ -1,7 +1,7 @@
-# The web demo of HHEM-2.1-Open
+# The web demo of HHEM-{1.0, 2.0}-Open
 
 
-The code here wraps HHEM-2.1-Open into a web app. For details of the model itself, see [here](https://huggingface.co/vectara/hallucination_evaluation_model) 
+The code here wraps HHEM-{1.0, 2.0}-Open into a web app. For details of the model itself, see [here](https://huggingface.co/vectara/hallucination_evaluation_model) 
 
 
 ```bash
